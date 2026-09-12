@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function HomePage() {
   const [search, setSearch] = useState('');
-  const [error, seterror] = useState('');
+  const [error, setError] = useState('');
   const [anime, setAnime] = useState<any[]>([]);
 
   async function loadData() {
@@ -12,12 +12,14 @@ export default function HomePage() {
       if (!search.trim()) {
         return;
       }
+      setError('');
       const data = await getAnime(search);
       setAnime(data.data);
     }
 
-    catch{
-      seterror("Failed to fetch anime.");
+    catch(error){
+      console.log(error)
+      setError("Failed to fetch anime.");
     }
     
   }
@@ -37,13 +39,9 @@ export default function HomePage() {
       <button onClick={loadData}>Search</button>
 
       {error && <h1>{error}</h1>}
-      {anime.map((item) => (
+      {anime?.map((item) => (
         <div key={item.mal_id}>
 
-          <img
-            src={item.images.jpg.image_url}
-            alt={item.title}
-          />
           <h1>{item.title}</h1>
 
         </div>
