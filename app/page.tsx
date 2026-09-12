@@ -1,22 +1,30 @@
 'use client'
-import { getAnime } from "@/lib/search"
+import { getAnime } from '@/lib/search';
 import { useState } from 'react';
 
 export default function HomePage() {
   const [search, setSearch] = useState('');
+  const [error, seterror] = useState('');
   const [anime, setAnime] = useState<any[]>([]);
 
   async function loadData() {
-    if(!search.trim()){
-      return;
+    try {
+      if (!search.trim()) {
+        return;
+      }
+      const data = await getAnime(search);
+      setAnime(data.data);
     }
-    const data = await getAnime(search);
-    setAnime(data.data);
+
+    catch{
+      seterror("Failed to fetch anime.");
+    }
+    
   }
 
   return (
     <div>
-      <h1 className="text-3xl  text-center mt-5">Find Your Anime</h1>
+      <h1 className="text-3xl text-center mt-5">Find Your Anime</h1>
 
       <input
         type="text"
@@ -28,6 +36,7 @@ export default function HomePage() {
 
       <button onClick={loadData}>Search</button>
 
+      {error && <h1>{error}</h1>}
       {anime.map((item) => (
         <div key={item.mal_id}>
 
