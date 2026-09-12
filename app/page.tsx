@@ -14,7 +14,7 @@ export default function HomePage() {
       }
       setError('');
       const data = await getAnime(search);
-      setAnime(data.data);
+      setAnime(data.data.Page.media);
     }
 
     catch(error){
@@ -40,9 +40,9 @@ export default function HomePage() {
 
       {error && <h1>{error}</h1>}
       {anime?.map((item) => (
-        <div key={item.mal_id}>
+        <div key={item.id}>
 
-          <h1>{item.title}</h1>
+          <h1>{item.title.english}</h1>
 
         </div>
       ))}

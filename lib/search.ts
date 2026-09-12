@@ -1,15 +1,46 @@
-export async function getAnime(search: string){
-    const res = await fetch(
-        `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(search)}&limit=5`
-    );
+export async function getAnime(search: string) {
+    const query = `
+        query ($search: String){
+            Page {
+                media(search: $search, type: ANIME) {
+                    id
+                    title {
+                        romaji
+                        english
+                        native
+                    }
+                    coverImage{
+                        extraLarge
+                        large
+                        medium
+                    }
+                }
+            }
+        }
+        
+    `;
 
-    if(!res.ok){
+    const animeApi = 'https://graphql.anilist.co';
+
+    const res = await fetch(animeApi, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+            query,
+            variables: {
+                'search': search
+            }
+        })
+    })
+
+    if (!res.ok) {
         console.log(res.status);
         throw new Error(`Failed to fetch anime: ${res.status}`);
     }
-    
-    
-        return res.json();
 
-  
+    return res.json();
+
 }
