@@ -1,6 +1,7 @@
 'use client'
 import { getAnime } from '@/lib/search';
 import { useState } from 'react';
+import {anton, viga} from '@/utils/fonts';
 
 export default function HomePage() {
   const [search, setSearch] = useState('');
@@ -28,7 +29,7 @@ export default function HomePage() {
 
   return (
     <div className="m-5">
-      <h1 className="text-3xl text-center mt-7 text-white">Find Yo Anime</h1>
+      <h1 className={`text-3xl text-center mt-7 text-white ${anton.className}`}>Find Yo Anime</h1>
 
       <div className="flex pt-5 pb-5 gap-3 justify-center itmes-center">
         <input
