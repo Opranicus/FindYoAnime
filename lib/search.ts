@@ -14,6 +14,7 @@ export async function getAnime(search: string) {
                         large
                         medium
                     }
+                    genres
                 }
             }
         }
