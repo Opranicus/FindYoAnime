@@ -15,6 +15,7 @@ export async function getAnime(search: string) {
                         medium
                     }
                     genres
+                    episodes
                 }
             }
         }
