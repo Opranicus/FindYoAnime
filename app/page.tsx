@@ -30,6 +30,12 @@ export default function HomePage() {
 
   }
 
+  const enterEvent = function(event: React.KeyboardEvent<HTMLInputElement>){
+    if(event.key === 'Enter'){
+      loadData();
+    }
+  }
+
   return (
     <div className="m-5">
       <h1 className={`text-3xl text-center mt-7 text-white ${anton.className}`}>Find Yo Anime</h1>
@@ -40,6 +46,7 @@ export default function HomePage() {
           placeholder="Search Anime: "
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={enterEvent}
           className="border-2 border-[#334155] p-2 rounded-md text-white"
 
         />
@@ -50,6 +57,7 @@ export default function HomePage() {
         >
           Search
         </button>
+
 
       </div>
 
