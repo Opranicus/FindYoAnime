@@ -2,11 +2,13 @@
 import { getAnime } from '@/lib/search';
 import { useState } from 'react';
 import { anton, viga } from '@/utils/fonts';
+import Modal from '@/components/Modal';
 
 export default function HomePage() {
   const [search, setSearch] = useState('');
   const [error, setError] = useState('');
   const [anime, setAnime] = useState<any[]>([]);
+  const [isOpen, setOpen] = useState(false);
 
   async function loadData() {
 
@@ -69,15 +71,29 @@ export default function HomePage() {
 
               <div className="flex flex-wrap justify-evenly items-center gap-0.75 mt-3">
                 {item.genres.map((genre: any) => (
-                  <div key={genre.id} className="border-2 border-[#334155] p-1.25 rounded">
+                  <div key={genre} className="border-2 border-[#334155] p-1.25 rounded">
                     <h1 className={`${viga.className} text-[9px] text-white`}>{genre}</h1>
                   </div>
                 ))}
+
               </div>
 
               <hr className="border w-full mt-3 border-[#0F172A]" />
 
-              <h1 className={`text-white text-[16px] mt-3 ${viga.className} `}>Episodes: {item.episodes}</h1>
+              <button
+                onClick={() => setOpen(true)}
+                className="mt-3 text-gray-600 cursor-pointer"
+              >
+                More...
+              </button>
+
+              <Modal
+                isVisible={isOpen}
+                onClose={() => setOpen(false)}
+
+              >
+                
+              </Modal>
 
             </div>
 
