@@ -31,7 +31,7 @@ export default function Modal({ isVisible, onClose, children }: Props) {
         <dialog
             ref={dialogRef}
             onClose={onClose}
-            className="p-6 rounded-lg bg-black backdrop:bg-black/50 w-screen max-w-none "
+            className="p-6 rounded-lg bg-black/80 backdrop:bg-black/50 w-screen max-w-none"
         >
             <div>
                 <div className="flex justify-end">

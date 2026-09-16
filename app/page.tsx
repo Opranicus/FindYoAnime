@@ -9,6 +9,7 @@ export default function HomePage() {
   const [error, setError] = useState('');
   const [anime, setAnime] = useState<any[]>([]);
   const [isOpen, setOpen] = useState(false);
+  const [selectedAnime, setSelectedAnime] = useState<any>(null);
 
   async function loadData() {
 
@@ -30,8 +31,8 @@ export default function HomePage() {
 
   }
 
-  const enterEvent = function(event: React.KeyboardEvent<HTMLInputElement>){
-    if(event.key === 'Enter'){
+  const enterEvent = function (event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
       loadData();
     }
   }
@@ -89,24 +90,37 @@ export default function HomePage() {
               <hr className="border w-full mt-3 border-[#0F172A]" />
 
               <button
-                onClick={() => setOpen(true)}
+                onClick={() => {
+                  setOpen(true)
+                  setSelectedAnime(item)
+                }}
                 className="mt-3 text-gray-600 cursor-pointer"
               >
                 More...
               </button>
 
-              <Modal
-                isVisible={isOpen}
-                onClose={() => setOpen(false)}
-
-              >
-                
-              </Modal>
-
             </div>
 
           </div>
         ))}
+
+        <Modal
+          isVisible={isOpen}
+          onClose={() => setOpen(false)}
+        >
+          {selectedAnime && (
+            <div className="flex flex-col justify-center items-center">
+              <div className="mt-10">
+                <img src={selectedAnime.coverImage.large} className="rounded-md" />
+                <h1>{selectedAnime.title.romaji}</h1>
+              </div>
+
+            </div>
+
+          )}
+
+        </Modal>
+
       </div>
 
     </div>
