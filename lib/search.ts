@@ -16,6 +16,8 @@ export async function getAnime(search: string) {
                     }
                     genres
                     episodes
+                    status
+                    description
                 }
             }
         }
