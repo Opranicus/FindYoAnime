@@ -21,15 +21,18 @@ export default function HomePage() {
       }
 
       setError('');
-      setNotFound('');
+      setNotFound(search + " does not exist.")
       const data = await getAnime(search);
-
+      
       if (data.data.Page.media.length) {
         setAnime(data.data.Page.media);
       }
 
       else {
-        setNotFound(search + "does not exsist");
+        setTimeout(() => {
+          setNotFound('');
+        }, 5000)
+        
       }
 
     }
@@ -74,7 +77,7 @@ export default function HomePage() {
 
       {error && <h1 className="bg-red-400 border-2 border-black rounded-md max-w-md p-4 text-center">{error}</h1>}
       {notFound && <h1 className="bg-red-400 border-2 border-black rounded-md max-w-md p-4 text-center">{notFound}</h1>}
-      <div className="flex flex-col justify-center items-center gap-5 w-full">
+      <div className="flex flex-col justify-center items-center gap-5 w-full p-3">
 
         {anime.map((item) => (
           <div key={item.id} className="mt-5 bg-[#1E293B] gap-5 flex w-full h-auto p-3 rounded shadow-2xl">
