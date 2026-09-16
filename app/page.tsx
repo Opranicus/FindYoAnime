@@ -9,6 +9,7 @@ export default function HomePage() {
   const [error, setError] = useState('');
   const [anime, setAnime] = useState<any[]>([]);
   const [isOpen, setOpen] = useState(false);
+  const [notFound, setNotFound] = useState('');
   const [selectedAnime, setSelectedAnime] = useState<any>(null);
 
   async function loadData() {
@@ -20,8 +21,17 @@ export default function HomePage() {
       }
 
       setError('');
+      setNotFound('');
       const data = await getAnime(search);
-      setAnime(data.data.Page.media);
+
+      if(data.data.Page.media.length) {
+        setAnime(data.data.Page.media);
+      }
+
+      else{
+        setNotFound(search + "does not exsist");
+      }
+      
     }
 
     catch (error) {
@@ -63,6 +73,7 @@ export default function HomePage() {
       </div>
 
       {error && <h1 className="bg-red-400 border-2 border-black rounded-md max-w-md p-4 text-center">{error}</h1>}
+      {notFound && <h1 className="bg-red-400 border-2 border-black rounded-md max-w-md p-4 text-center">{notFound}</h1>}
       <div className="flex flex-col justify-center items-center gap-5 w-full">
 
         {anime.map((item) => (
