@@ -112,7 +112,7 @@ export default function HomePage() {
             <div className="flex flex-col justify-center items-center">
               <div className="mt-10">
                 <img src={selectedAnime.coverImage.large} className="rounded-md" />
-                <h1>{selectedAnime.title.romaji}</h1>
+                <h1 className={`${anton.className} text-white text-center text-2xl mt-4`}>{selectedAnime.title.romaji}</h1>
               </div>
 
             </div>
