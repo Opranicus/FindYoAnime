@@ -1,4 +1,4 @@
-import { Preview } from "@/types/anime_preview"
+import { Preview } from "@/types/anime"
 import { anton,viga } from "@/utils/fonts"
 
 type Props = {
