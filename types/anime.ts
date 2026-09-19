@@ -5,7 +5,7 @@ export type Preview = {
 }
 
 export type FullDetails = {
-    coverImage: { extraLarge: string }
+    coverImage: { large: string }
     title: { romaji: string }
     genres: string[]
     episodes: number
