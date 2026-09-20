@@ -12,15 +12,13 @@ export async function register(formData: FormData) {
     const username = formData.get('username') as string
     const password = formData.get('password') as string
 
+    console.log("EMAIL:", email)
     const { data, error } = await supabase.auth.signUp({
         email,
         password,
     })
 
-    if (error) {
-        return redirect(`/error?message=${encodeURIComponent(error.message)}`)
-    }
-
+    
     if (data.user) {
         const { error: userError } = await supabase.from('users').insert({
             id: data.user.id,
@@ -30,6 +28,10 @@ export async function register(formData: FormData) {
         if (userError) {
             return redirect(`/error?message=${encodeURIComponent(userError.message)}`)
         }
+    }
+
+    if (error) {
+        return redirect(`/error?message=${encodeURIComponent(error.message)}`)
     }
 
 }
