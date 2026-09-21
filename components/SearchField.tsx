@@ -1,4 +1,5 @@
 import React from "react"
+import Button from "./Button"
 
 type Props = {
     value: string
@@ -20,12 +21,10 @@ export default function SearchField({ value, onChange, onKeyDown,onClick }: Prop
 
             />
 
-            <button
+            <Button 
+                label="Search"
                 onClick={onClick}
-                className="bg-green-500 p-2 rounded-md"
-            >
-                Search
-            </button>
+            />
 
 
         </div>
