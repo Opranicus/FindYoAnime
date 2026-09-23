@@ -1,13 +1,17 @@
+import { viga } from "@/utils/fonts"
+
 type Props = {
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
+    type?: "button" | "submit";
 }
 
-export default function Button({ label, onClick }: Props) {
+export default function Button({ label, onClick, type }: Props) {
     return (
         <button 
             onClick={onClick}
-            className="bg-green-500 p-2 rounded-md"
+            type={type}
+            className={`bg-green-500 text-white p-2 rounded-md ${viga.className}`}
         >
             {label}
         </button>
