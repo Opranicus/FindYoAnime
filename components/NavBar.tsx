@@ -1,4 +1,4 @@
-import { anton } from "@/utils/fonts";
+import { anton,viga } from "@/utils/fonts";
 import Link from "next/link";
 
 export default function NavBar() {
@@ -8,7 +8,7 @@ export default function NavBar() {
         Find Yo Anime
       </h1>
       <nav>
-        <Link href="/sign-in" className="text-white">Profile</Link>
+        <Link href="/login" className={`text-white ${viga.className}`} >Profile</Link>
       </nav>
     </div>
   );
