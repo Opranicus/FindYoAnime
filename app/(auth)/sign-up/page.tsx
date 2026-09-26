@@ -1,6 +1,6 @@
 "use client";
 import { anton, viga } from "@/utils/fonts";
-import { register } from "@/app/actions/register";
+import { register } from "@/app/actions/sign-up";
 import Button from "@/components/Button";
 
 export default function SignUp() {
