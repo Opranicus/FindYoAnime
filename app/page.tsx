@@ -47,7 +47,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <NavBar />
       <div className="m-5">
         
         <SearchField
