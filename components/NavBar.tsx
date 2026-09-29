@@ -8,7 +8,6 @@ type Props = {
 };
 
 export default function NavBar({ isLoggedIn, username }: Props) {
-  const supabase = createClient();
 
   return (
     <div className="flex justify-between items-center p-5 bg-[#050a17f9]">
@@ -22,7 +21,7 @@ export default function NavBar({ isLoggedIn, username }: Props) {
             <h1>
               Welcome 
               <span>
-                <Link href="/profile">{username}</Link>
+                <Link href="/profile"> {username}</Link>
               </span>
             </h1>
           </div>

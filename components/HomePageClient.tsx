@@ -9,17 +9,13 @@ import SearchField from "@/components/SearchField";
 import NavBar from "@/components/NavBar";
 import { createClient } from "@/utils/supabase/server";
 
-export default async function HomePage() {
+export default function HomePageClient() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [anime, setAnime] = useState<any[]>([]);
   const [isOpen, setOpen] = useState(false);
   const [notFound, setNotFound] = useState("");
   const [selectedAnime, setSelectedAnime] = useState<any>(null);
-
-    const supabase = await createClient();
-    const {data: {user}} = await supabase.auth.getUser() 
-    const username = user?.user_metadata.username;
 
   async function loadData() {
     try {
@@ -53,7 +49,6 @@ export default async function HomePage() {
   return (
     <div>
       <div className="m-5">
-        <NavBar isLoggedIn={user?.id ? true : false} username={username} />
         <SearchField
           value={search}
           onChange={(e) => setSearch(e.target.value)}
