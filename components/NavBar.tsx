@@ -1,10 +1,9 @@
 import { anton, viga } from "@/utils/fonts";
-import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 
 type Props = {
   isLoggedIn: boolean;
-  username: string;
+  username?: string;
 };
 
 export default function NavBar({ isLoggedIn, username }: Props) {

@@ -10,7 +10,7 @@ import NavBar from "@/components/NavBar";
 
 type Props = {
     isLoggedIn: boolean;
-    username: string;
+    username?: string | undefined;
 }
 
 export default function HomePageClient({isLoggedIn, username}: Props) {
@@ -52,11 +52,12 @@ export default function HomePageClient({isLoggedIn, username}: Props) {
 
   return (
     <div>
-      <div className="m-5">
         <NavBar 
             isLoggedIn={isLoggedIn}
             username={username}
         />
+      <div className="m-5">
+        
         <SearchField
           value={search}
           onChange={(e) => setSearch(e.target.value)}
