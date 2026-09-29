@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function NavBar({ isLoggedIn, username }: Props) {
-
+ 
   return (
     <div className="flex justify-between items-center p-5 bg-[#050a17f9]">
       <h1 className={`text-2xl text-center text-white ${anton.className}`}>
@@ -21,7 +21,7 @@ export default function NavBar({ isLoggedIn, username }: Props) {
             <h1>
               Welcome 
               <span>
-                <Link href="/profile"> {username}</Link>
+                <Link href="/profile">{username}</Link>
               </span>
             </h1>
           </div>

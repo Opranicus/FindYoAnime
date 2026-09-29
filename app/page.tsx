@@ -1,90 +1,15 @@
-"use client";
-import { getAnime } from "@/lib/search";
-import { useState } from "react";
-import { anton } from "@/utils/fonts";
-import Modal from "@/components/Modal";
-import AnimePreview from "@/components/AnimePreview";
-import AnimeFullDetails from "@/components/AnimeDetails";
-import SearchField from "@/components/SearchField";
-import NavBar from "@/components/NavBar";
 import { createClient } from "@/utils/supabase/server";
+import HomePageClient from "@/components/HomePageClient";
 
-export default async function HomePage() {
-  const [search, setSearch] = useState("");
-  const [error, setError] = useState("");
-  const [anime, setAnime] = useState<any[]>([]);
-  const [isOpen, setOpen] = useState(false);
-  const [notFound, setNotFound] = useState("");
-  const [selectedAnime, setSelectedAnime] = useState<any>(null);
+export default async function HomePage(){
+  const supbase = await createClient();
+  const {data: {user}} = await supbase.auth.getUser();
+  const username = user?.user_metadata?.username;
 
-    const supabase = await createClient();
-    const {data: {user}} = await supabase.auth.getUser() 
-    const username = user?.user_metadata.username;
-
-  async function loadData() {
-    try {
-      if (!search.trim()) {
-        return;
-      }
-
-      setError("");
-      const data = await getAnime(search);
-
-      if (data.data.Page.media.length) {
-        setAnime(data.data.Page.media);
-      } else {
-        setNotFound(search + " does not exist.");
-        setTimeout(() => {
-          setNotFound("");
-        }, 4000);
-      }
-    } catch (error) {
-      console.log(error);
-      setError("Failed to fetch " + search);
-    }
-  }
-
-  const enterEvent = function (event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "Enter") {
-      loadData();
-    }
-  };
-
-  return (
-    <div>
-      <div className="m-5">
-        <NavBar isLoggedIn={user?.id ? true : false} username={username} />
-        <SearchField
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={enterEvent}
-          onClick={loadData}
-        />
-
-        {error && (
-          <h1 className="bg-red-400 border-2 border-black rounded-md max-w-md p-4 text-center">
-            {error}
-          </h1>
-        )}
-        {notFound && (
-          <h1 className="bg-red-400 border-2 border-black rounded-md max-w-md p-4 text-center">
-            {notFound}
-          </h1>
-        )}
-        <div className="flex flex-col justify-center items-center gap-5 w-full p-3">
-          {anime.map((item) => (
-            <AnimePreview
-              key={item.id}
-              preview={item}
-              onMore={() => (setOpen(true), setSelectedAnime(item))}
-            />
-          ))}
-
-          <Modal isVisible={isOpen} onClose={() => setOpen(false)}>
-            {selectedAnime && <AnimeFullDetails full={selectedAnime} />}
-          </Modal>
-        </div>
-      </div>
-    </div>
-  );
+  return(
+    <HomePageClient 
+      isLoggedIn={!!user}
+      username={username}
+    />
+  )
 }

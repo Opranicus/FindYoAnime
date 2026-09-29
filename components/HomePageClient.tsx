@@ -7,9 +7,13 @@ import AnimePreview from "@/components/AnimePreview";
 import AnimeFullDetails from "@/components/AnimeDetails";
 import SearchField from "@/components/SearchField";
 import NavBar from "@/components/NavBar";
-import { createClient } from "@/utils/supabase/server";
 
-export default function HomePageClient() {
+type Props = {
+    isLoggedIn: boolean;
+    username: string;
+}
+
+export default function HomePageClient({isLoggedIn, username}: Props) {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [anime, setAnime] = useState<any[]>([]);
@@ -49,6 +53,10 @@ export default function HomePageClient() {
   return (
     <div>
       <div className="m-5">
+        <NavBar 
+            isLoggedIn={isLoggedIn}
+            username={username}
+        />
         <SearchField
           value={search}
           onChange={(e) => setSearch(e.target.value)}
