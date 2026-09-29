@@ -1,6 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
 import HomePageClient from "@/components/HomePageClient";
-import Profile from "./profile/page";
 
 export default async function HomePage(){
   const supabase = await createClient();
@@ -8,13 +7,9 @@ export default async function HomePage(){
   const username = user?.user_metadata?.username;
 
   return(
-    <>
       <HomePageClient 
         isLoggedIn={!!user}
         username={username}
       />
-
-    </>
-    
   )
 }
