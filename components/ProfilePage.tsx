@@ -1,4 +1,5 @@
 import Link from "next/link"
+import LogoutButton from "./LogoutButton"
 
 type Props = {
     isLoggedIn: boolean;
@@ -14,6 +15,7 @@ export default function ProfilePage({isLoggedIn, username}: Props){
                 <h1>This is the profile page</h1>
                 <h1>Welcome {username}</h1>
                 <Link href='/'>Home</Link>
+                <LogoutButton />
             </div>
 
            ) : (
