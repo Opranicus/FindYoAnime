@@ -20,7 +20,7 @@ export default function NavBar({ isLoggedIn, username }: Props) {
             <h1>
               Welcome 
               <span>
-                <Link href="/profile">{username}</Link>
+                <Link href="/profile"> {username}</Link>
               </span>
             </h1>
           </div>
