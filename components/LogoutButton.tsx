@@ -1,5 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+import { viga, anton } from "@/utils/fonts";
 
 export default function LogoutButton(){
 
@@ -18,7 +19,7 @@ export default function LogoutButton(){
 
     return(
         <form action={logout}>
-            <button className='p-3 bg-red-500 text-white font-semibold rounded-md mt-3'>
+            <button className={`bg-red-500 text-white p-3 rounded-md ${viga.className}`}>
                 Logout
             </button>
         </form>
