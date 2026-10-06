@@ -17,9 +17,9 @@ export default function NavBar({ isLoggedIn, username }: Props) {
       <nav>
         {isLoggedIn ? (
           <div>
-            <h1>
-              Welcome 
-              <span>
+            <h1 className={`flex justify-center items-center gap-3 text-[18px] text-center text-white ${anton.className}`}>
+              Welcome, 
+              <span className={`text-[18px] text-center text-[cyan] ${viga.className}`}>
                 <Link href="/profile"> {username}</Link>
               </span>
             </h1>

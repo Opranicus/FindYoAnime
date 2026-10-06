@@ -20,5 +20,5 @@ export async function login(prevState: any, formData: FormData){
             return { success: false, message: 'Wrong email or wrong password.' }
         } 
     }
-    redirect('/profile')
+    redirect('/')
 }
