@@ -1,4 +1,5 @@
 import { anton, viga } from "@/utils/fonts";
+import { LikedAnime } from "./LikedAnime";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
 import Image from "next/image";
@@ -47,7 +48,7 @@ export default function ProfilePage({ isLoggedIn, username, email }: Props) {
           </div>
 
         <h1 className={`text-white text-3xl mt-15 ${anton.className}`}>Anime List:</h1>
-
+        <LikedAnime />
         </div>
       ) : (
         <div>
