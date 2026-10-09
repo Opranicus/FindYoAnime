@@ -5,6 +5,7 @@ export type Preview = {
 }
 
 export type FullDetails = {
+    id: number
     coverImage: { large: string }
     title: { romaji: string }
     genres: string[]

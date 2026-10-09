@@ -1,5 +1,6 @@
 import { FullDetails } from "@/types/anime";
 import { anton, viga } from "@/utils/fonts";
+import FavoriteButton from "./FavoriteButton";
 
 type Props = {
     full: FullDetails;
@@ -42,6 +43,7 @@ export default function AnimeFullDetails({ full }: Props) {
                 <p className={`${viga.className} text-white text-[16px] text-justify mt-5`}>{full.description}</p>
             </div>
 
+            <FavoriteButton animeId={full.id} initial={false} /> 
         </div>
     )
 }
