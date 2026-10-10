@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { getFavoriteAnime } from "@/lib/userFavoriteAnime";
 import { redirect } from "next/navigation";
+import RemoveButton from "./RemoveButton";
 
 export async function LikedAnime() {
   const supabase = await createClient();
@@ -41,6 +42,7 @@ export async function LikedAnime() {
                         className="h-56 rounded-md"
                     />
                     <h1>{fav.title.romaji}</h1>
+                    <RemoveButton animeId={fav.id}/>
                 </div>
             ))
         )}
