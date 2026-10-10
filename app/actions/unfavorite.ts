@@ -15,7 +15,7 @@ export async function Remove(animeId: number) {
   }
 
   const { data: liked } = await supabase
-    .from("favorite")
+    .from("favorites")
     .select("id")
     .eq("user_id", user.id)
     .eq("anime_id", animeId)

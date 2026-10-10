@@ -20,7 +20,7 @@ export default function RemoveButton({animeId}: Props){
 
     return(
         <button onClick={remove}>
-            Remove from list
+            Remove
         </button>
     )
 }
