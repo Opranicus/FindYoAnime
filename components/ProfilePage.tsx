@@ -47,8 +47,11 @@ export default function ProfilePage({ isLoggedIn, username, email }: Props) {
             </div>
           </div>
 
-        <h1 className={`text-white text-3xl mt-15 ${anton.className}`}>Anime List:</h1>
-        <LikedAnime />
+        <div className="flex flex-col items-center justify-center">
+          <h1 className={`text-white text-3xl mt-15 ${anton.className}`}>Anime List:</h1>
+          <LikedAnime />
+        </div>
+        
         </div>
       ) : (
         <div>
