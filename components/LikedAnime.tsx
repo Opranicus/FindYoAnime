@@ -32,21 +32,21 @@ export async function LikedAnime() {
   }
 
   return (
-    <main className="flex flex-wrap justify-center items-center">
+    <main className="flex justify-center items-center">
         {userFavorite.length === 0 ? (
             <p className="text-white">You dont have any liked animes yet</p>
         ) : (
-            userFavorite.map((fav) => (
-                <div key={fav.id} className="bg-[#1E293B] flex flex-col items-center justify-center m-5 p-5 rounded-sm">
+          userFavorite.map((fav) => (
+                <div key={fav.id} className="bg-[#1E293B] flex flex-col items-center justify-center m-5 p-5 rounded-sm w-64">
                     <img 
                         src={fav.coverImage.extraLarge} 
                         className="h-64 rounded-md"
                     />
-                    <h1 className={`${anton.className} mt-5 text-white text-xl w-54`}>{fav.title.romaji}</h1>
+                    <h1 className={`${anton.className} mt-5 text-white text-xl`}>{fav.title.romaji}</h1>
                     <RemoveButton animeId={fav.id}/>
                 </div>
             ))
-        )}
+          )}
             
     </main>
   )

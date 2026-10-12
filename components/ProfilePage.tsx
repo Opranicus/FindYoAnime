@@ -16,7 +16,7 @@ export default function ProfilePage({ isLoggedIn, username, email }: Props) {
     <div className="flex flex-col items-center justify-center">
       {isLoggedIn ? (
         <div>
-          <div className="bg-[#050a17f9] m-5 mt-20 rounded-xl flex flex-col justify-center items-center gap-3 p-5 max-w-xl w-md">
+          <div className="bg-[#050a17f9] m-5 mt-20 rounded-xl flex flex-col justify-center items-center gap-3 p-5">
             <Image
               src="/icons/user.png"
               alt="User icon"
