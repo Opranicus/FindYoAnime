@@ -32,7 +32,7 @@ export async function LikedAnime() {
   }
 
   return (
-    <main className="flex justify-center items-center">
+    <main className="flex flex-col justify-center items-center">
         {userFavorite.length === 0 ? (
             <p className="text-white">You dont have any liked animes yet</p>
         ) : (
